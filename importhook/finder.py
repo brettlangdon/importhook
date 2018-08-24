@@ -12,6 +12,11 @@ def hook_finder(finder):
     This function replaces the `Finder.find_spec` function to ensure that any ModuleSpecs will
     use an `importmod.HookLoader`
     """
+    # If this finder has already been 'hooked', then return as-is
+    if hasattr(finder, '__hooked__'):
+        return finder;
+
+    # Determine if we were given an instance or a class
     if isinstance(finder, type):
         finder_cls = finder
     else:
@@ -30,7 +35,7 @@ def hook_finder(finder):
             return spec
         return wrapper
 
-    def wrap_fid_loader(find_loader):
+    def wrap_find_loader(find_loader):
         @functools.wraps(find_loader)
         def wrapper(fullname, path):
             logger.debug(f'{finder_name}.find_loader(fullname={fullname}, path={path})')
@@ -38,8 +43,12 @@ def hook_finder(finder):
             return HookLoader(loader)
         return wrapper
 
+    # Override the functions we care about
     if hasattr(finder, 'find_spec'):
         setattr(finder, 'find_spec', wrap_find_spec(finder.find_spec))
     if hasattr(finder, 'find_loader'):
         setattr(finder, 'find_loader', wrap_find_loader(finder.find_loader))
+
+    # Make this finder as being 'hooked'
+    setattr(finder, '__hooked__', True)
     return finder
