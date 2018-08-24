@@ -56,7 +56,7 @@ import importhook
 
 
 # Setup hook to be called any time the `socket` module is imported and loaded into module cache
-@ DEV: `on_socket_import` will be called immediately because the `socket` module is already loaded
+# DEV: `on_socket_import` will be called immediately because the `socket` module is already loaded
 @importhook.on_import('socket')
 def on_socket_import(socket):
     print('"socket" module has been imported')
