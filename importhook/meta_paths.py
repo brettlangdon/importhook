@@ -13,8 +13,3 @@ class HookMetaPaths(list):
 
     def __setitem__(self, key, val):
         super(HookMetaPaths, self).__setitem__(hook_finder(val))
-
-    def __add__(self, other):
-        if not isinstance(other, HookMetaPaths):
-            other = HookMetaPaths(other)
-        super(HookMetaPaths, self).__add__(other)

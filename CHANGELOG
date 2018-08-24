@@ -1,10 +1,23 @@
 Importhook Changelog
 ===================
 
+Version 1.0.1
+-------------
+
+:Released: 09-24-2018
+
+:Changes:
+	Expand on documentation.
+
+	Fix `setup.py` long description content type.
+
+	Cleanup code for finder and meta paths.
+
+
 Version 1.0.0
 -------------
 
-:Released: 09-22-2018
+:Released: 09-24-2018
 
 :Changes:
-  Initial release
+	Initial release
