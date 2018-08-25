@@ -13,7 +13,7 @@ def get_long_description():
 
 setup(
     name='importhook',
-    version='1.0.2',
+    version='1.0.4',
     url='https://github.com/brettlangdon/importhook',
     license='MIT',
     author='Brett Langdon',
@@ -21,7 +21,7 @@ setup(
     description='Execute code when certain modules are imported',
     long_description=get_long_description(),
     long_description_content_type='text/markdown',
-    py_modules=find_packages(),
+    packages=find_packages(),
     zip_safe=False,
     include_package_data=True,
     platforms='any',
