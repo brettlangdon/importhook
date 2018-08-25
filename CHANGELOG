@@ -1,6 +1,15 @@
 Importhook Changelog
 ===================
 
+Version 1.0.6
+-------------
+
+:Released: 09-25-2018
+
+:Changes:
+	Fix support for older loaders that use load_module or find_module
+
+
 Version 1.0.5
 -------------
 
