@@ -1,6 +1,15 @@
 Importhook Changelog
 ===================
 
+Version 1.0.5
+-------------
+
+:Released: 09-25-2018
+
+:Changes:
+	Remove HookLoader functions load_module and create_module.
+
+
 Version 1.0.4
 -------------
 
