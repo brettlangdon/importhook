@@ -123,7 +123,7 @@ def copy_module(module, copy_attributes=True, copy_spec=True):
     name = get_module_name(module)
     new_mod = types.ModuleType(name)
     setattr(new_mod, '__original_module__', module)
-    setattr(new_mod, '__reset_module__', lambda: uncopy_module(name))
+    setattr(new_mod, '__reset_module__', lambda: reset_module(name))
 
     # Copy all module attributes
     if copy_attributes:

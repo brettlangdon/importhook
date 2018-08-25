@@ -1,4 +1,3 @@
-from importlib.abc import MetaPathFinder
 import functools
 
 from .loader import HookLoader
@@ -14,7 +13,7 @@ def hook_finder(finder):
     """
     # If this finder has already been 'hooked', then return as-is
     if hasattr(finder, '__hooked__'):
-        return finder;
+        return finder
 
     # Determine if we were given an instance or a class
     if isinstance(finder, type):
