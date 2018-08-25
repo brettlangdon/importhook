@@ -1,6 +1,17 @@
 Importhook Changelog
 ===================
 
+Version 1.0.2
+-------------
+
+:Released: 09-24-2018
+
+:Changes:
+	Fix linting issues.
+
+	Ensure `on_import` decorator returns wrapped function.
+
+
 Version 1.0.1
 -------------
 
