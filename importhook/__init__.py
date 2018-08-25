@@ -68,8 +68,10 @@ def on_import(module_name, func=None):
         importhook.on_import('httplib', on_httplib_import)
     """
     if func is None:
+        @functools.wraps(func)
         def decorator(func):
             registry[module_name] = func
+            return func
         return decorator
     else:
         registry[module_name] = func
