@@ -67,7 +67,7 @@ def on_socket_import(socket):
 socket = importhook.reload_module(socket)
 ```
 ## Design decisions
-### Overwriting sys.meta_paths
+### Overwriting sys.meta_path
 If a Python developer wants to modify the import behavior they can do so by adding a new `importlib.abc.Finder`
 class into `sys.meta_path`.
 
