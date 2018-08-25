@@ -15,14 +15,6 @@ class HookLoader(Loader):
     def __init__(self, loader):
         self.loader = loader
 
-    def load_module(self, *args, **kwargs):
-        logger.debug(f'{self.__class__.__name__}.load_module(*args={args}, **kwargs={kwargs})')
-        return self.loader.load_module(*args, **kwargs)
-
-    def create_module(self, *args, **kwargs):
-        logger.debug(f'{self.__class__.__name__}.create_module(*args={args}, **kwargs={kwargs})')
-        return self.loader.create_module(*args, **kwargs)
-
     def exec_module(self, module, *args, **kwargs):
         logger.debug(f'{self.__class__.__name__}.exec_module(module={module}, *args={args}, **kwargs={kwargs})')
         name = get_module_name(module)
