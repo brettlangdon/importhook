@@ -6,13 +6,14 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>importhook &#8212; importhook  documentation</title>
+    <title>&lt;no title&gt; &#8212; importhook  documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
    
@@ -32,99 +33,6 @@
           <div class="body" role="main">
             
   <div class="toctree-wrapper compound">
-</div>
-<span class="target" id="module-importhook"></span><div class="section" id="importhook">
-<h1>importhook<a class="headerlink" href="#importhook" title="Permalink to this headline">¶</a></h1>
-<p>Python module for registering hooks to call when certain modules are imported.</p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">importhook</span>
-
-<span class="c1"># Configure a function to call when `socket` is imported</span>
-<span class="nd">@importhook</span><span class="o">.</span><span class="n">on_import</span><span class="p">(</span><span class="s1">&#39;socket&#39;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">socket_import</span><span class="p">(</span><span class="n">socket</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Socket module imported&#39;</span><span class="p">)</span>
-
-<span class="c1"># Import the `socket` module</span>
-<span class="kn">import</span> <span class="nn">socket</span>
-</pre></div>
-</div>
-<dl class="function">
-<dt id="importhook.copy_module">
-<code class="descclassname">importhook.</code><code class="descname">copy_module</code><span class="sig-paren">(</span><em>module</em>, <em>copy_attributes=True</em>, <em>copy_spec=True</em><span class="sig-paren">)</span><a class="headerlink" href="#importhook.copy_module" title="Permalink to this definition">¶</a></dt>
-<dd><p>Helper function for copying a python module</p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">importhook</span>
-
-<span class="nd">@importhook</span><span class="o">.</span><span class="n">on_import</span><span class="p">(</span><span class="s1">&#39;socket&#39;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">on_socket_import</span><span class="p">(</span><span class="n">socket</span><span class="p">):</span>
-    <span class="n">new_socket</span> <span class="o">=</span> <span class="n">importhook</span><span class="o">.</span><span class="n">copy_module</span><span class="p">(</span><span class="n">socket</span><span class="p">)</span>
-    <span class="nb">setattr</span><span class="p">(</span><span class="n">new_socket</span><span class="p">,</span> <span class="s1">&#39;get_hostname&#39;</span><span class="p">,</span> <span class="k">lambda</span><span class="p">:</span> <span class="s1">&#39;hostname&#39;</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">new_socket</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="function">
-<dt id="importhook.get_module_name">
-<code class="descclassname">importhook.</code><code class="descname">get_module_name</code><span class="sig-paren">(</span><em>module</em><span class="sig-paren">)</span><a class="headerlink" href="#importhook.get_module_name" title="Permalink to this definition">¶</a></dt>
-<dd><p>Helper function to get a module’s name</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="importhook.on_import">
-<code class="descclassname">importhook.</code><code class="descname">on_import</code><span class="sig-paren">(</span><em>module_name</em>, <em>func=None</em><span class="sig-paren">)</span><a class="headerlink" href="#importhook.on_import" title="Permalink to this definition">¶</a></dt>
-<dd><p>Helper function used to register a hook function for a given module</p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">importhook</span>
-
-<span class="nd">@importhook</span><span class="o">.</span><span class="n">on_import</span><span class="p">(</span><span class="s1">&#39;socket&#39;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">on_socket_import</span><span class="p">(</span><span class="n">socket</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;socket imported&#39;</span><span class="p">)</span>
-
-
-<span class="nd">@importhook</span><span class="o">.</span><span class="n">on_import</span><span class="p">(</span><span class="n">importhook</span><span class="o">.</span><span class="n">ANY_MODULE</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">on_any_import</span><span class="p">(</span><span class="n">module</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;</span><span class="si">{module.__spec__.name}</span><span class="s1"> imported&#39;</span><span class="p">)</span>
-
-
-<span class="k">def</span> <span class="nf">on_httplib_import</span><span class="p">(</span><span class="n">httplib</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;httplib imported&#39;</span><span class="p">)</span>
-
-
-<span class="n">importhook</span><span class="o">.</span><span class="n">on_import</span><span class="p">(</span><span class="s1">&#39;httplib&#39;</span><span class="p">,</span> <span class="n">on_httplib_import</span><span class="p">)</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="function">
-<dt id="importhook.reload_module">
-<code class="descclassname">importhook.</code><code class="descname">reload_module</code><span class="sig-paren">(</span><em>module_name</em><span class="sig-paren">)</span><a class="headerlink" href="#importhook.reload_module" title="Permalink to this definition">¶</a></dt>
-<dd><p>Helper function to reload the specified module</p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">socket</span>
-<span class="kn">import</span> <span class="nn">importhook</span>
-
-<span class="c1"># Reload the `socket` module by passing in module</span>
-<span class="n">socket</span> <span class="o">=</span> <span class="n">importhook</span><span class="o">.</span><span class="n">reload_module</span><span class="p">(</span><span class="n">socket</span><span class="p">)</span>
-
-<span class="c1"># Reload the `socket` module by passing in the name</span>
-<span class="n">socket</span> <span class="o">=</span> <span class="n">importhook</span><span class="o">.</span><span class="n">reload_module</span><span class="p">(</span><span class="s1">&#39;socket&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="function">
-<dt id="importhook.reset_module">
-<code class="descclassname">importhook.</code><code class="descname">reset_module</code><span class="sig-paren">(</span><em>module_name</em><span class="sig-paren">)</span><a class="headerlink" href="#importhook.reset_module" title="Permalink to this definition">¶</a></dt>
-<dd><p>Helper function to reset a copied module.</p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">socket</span>
-<span class="kn">import</span> <span class="nn">importhook</span>
-
-<span class="c1"># Copy `socket` module</span>
-<span class="n">socket</span> <span class="o">=</span> <span class="n">importhook</span><span class="o">.</span><span class="n">copy_module</span><span class="p">(</span><span class="n">socket</span><span class="p">)</span>
-
-<span class="c1"># Reset copied `socket` module back to it&#39;s original version</span>
-<span class="n">socket</span> <span class="o">=</span> <span class="n">importhook</span><span class="o">.</span><span class="n">reset_module</span><span class="p">(</span><span class="n">socket</span><span class="p">)</span>
-</pre></div>
-</div>
-</dd></dl>
-
 </div>
 
 
@@ -164,6 +72,14 @@
     </div>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
         </div>
       </div>
       <div class="clearer"></div>
@@ -172,8 +88,8 @@
       &copy;2018, Brett Langdon <me@brett.is>.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.7</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.11</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
       <a href="_sources/index.rst.txt"

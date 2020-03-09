@@ -1,6 +1,14 @@
 Importhook Changelog
 ===================
 
+Version 1.0.7
+-------------
+
+:Released: 03-09-2020
+:Changes:
+	Change usage of f-strings in debug logs to ''.format()
+
+
 Version 1.0.6
 -------------
 
