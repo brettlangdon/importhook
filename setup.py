@@ -13,7 +13,7 @@ def get_long_description():
 
 setup(
     name='importhook',
-    version='1.0.7',
+    version='1.0.8',
     url='https://github.com/brettlangdon/importhook',
     license='MIT',
     author='Brett Langdon',
@@ -26,6 +26,7 @@ setup(
     include_package_data=True,
     platforms='any',
     install_requires=[],
+    python_requires=">3.3",
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',

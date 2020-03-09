@@ -1,6 +1,15 @@
 Importhook Changelog
 ===================
 
+Version 1.0.8
+-------------
+
+:Released: 03-09-2020
+:Changes:
+	Revert: Change usage of f-strings in debug logs to ''.format()
+	Add `python_requires=">3.3"`
+
+
 Version 1.0.7
 -------------
 
