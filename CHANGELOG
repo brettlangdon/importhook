@@ -1,6 +1,13 @@
 Importhook Changelog
 ===================
 
+Version 1.0.9
+-------------
+
+:Released: 06-18-2020
+:Changes:
+	Correct super call in HookMetaPaths.__setitem__ (#3)
+
 Version 1.0.8
 -------------
 
