@@ -12,4 +12,4 @@ class HookMetaPaths(list):
         super(HookMetaPaths, self).__init__([hook_finder(f) for f in finders])
 
     def __setitem__(self, key, val):
-        super(HookMetaPaths, self).__setitem__(hook_finder(val))
+        super(HookMetaPaths, self).__setitem__(key, hook_finder(val))
