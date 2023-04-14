@@ -29,7 +29,7 @@ def hook_finder(finder):
         def wrapper(fullname, path, target=None):
             logger.debug(f'{finder_name}.find_spec(fullname={fullname}, path={path}, target={target})')
             spec = find_spec(fullname, path, target=target)
-            if spec is not None:
+            if spec is not None and spec.loader is not None:
                 spec.loader = HookLoader(spec.loader)
             return spec
         return wrapper
@@ -39,7 +39,10 @@ def hook_finder(finder):
         def wrapper(fullname, path):
             logger.debug(f'{finder_name}.find_loader(fullname={fullname}, path={path})')
             loader = find_loader(fullname, path)
-            return HookLoader(loader)
+            if loader is None:
+                return None
+            else:
+                return HookLoader(loader)
         return wrapper
 
     # Override the functions we care about
